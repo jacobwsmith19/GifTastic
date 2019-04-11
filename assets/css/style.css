@@ -55,23 +55,24 @@ small {
 }
 
 #add-button:hover, #add-button:active {
-	background: #0d7434;
+	background: #14a84d;
 }
 
 #clear-button {
     font-size: 16px;
     font-family: 'Londrina Solid', cursive;
-	background: rgb(166, 243, 42);
-	color: #e4672d;
+	color: rgb(166, 243, 42);
+	background: #e4672d;
     border: 2px solid;
-    border-color: #e4672d;
+    border-color: rgb(166, 243, 42);
 	padding: 10px 15px;
 	margin: 6px;
 	border-radius: 7px;
 }
 
 #clear-button:hover, #clear-button:active {
-	background: #0d7434;
+	background: #f80c0c;
+	color:white;
 }
 
 #new-input {
