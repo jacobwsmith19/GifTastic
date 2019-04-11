@@ -1,20 +1,20 @@
 // Array containing topics for original buttons
 var topics = [
-	"kids falling",
-	"people falling",
+	"handshake fails",
+	"gymnastics fails",
 	"ice skating fails",
 	"skateboarding fails",
 	"basketball fails",
-	"animals falling",
+	"baseball bloopers",
 	"animal fails",
 	"drunk people fails",
-	"handshake fails",
+	"high five fails",
 	"dancing fails",
 	"running fails",
 	"car fails",
 ];
 
-// Creates a button for each topic in the array
+// Creates a button for each topic in the array and puts them on the page
 for (var i = 0; i < topics.length; i++) {
 	var button = $("<button>").text(topics[i]);
 	button.attr("data-fail", topics[i]);
@@ -25,13 +25,13 @@ for (var i = 0; i < topics.length; i++) {
 // On click function for 'Submit' button
 $("#add-button").on("click", function(x) {
     
-    // Prevents user from creating a button that already exists on the page
+    // Determines if user's new input already exists on the page
 	x.preventDefault();
 	var alreadyExist = false;
 	if(topics.indexOf($("#new-input").val()) !== -1) {
 		alreadyExist = true;
 	}
-    // Creates new button from user input and adds it to page
+    // Adds new button to the page if input field isn't blank and doesn't already exist
     if($("#new-input").val() !== "" && alreadyExist === false) {
 		var newFail = $("#new-input").val().toLowerCase();
 		topics.push(newFail);
@@ -49,32 +49,35 @@ $(document).on("click", ".fail-button", function() {
 	var fail = $(this).attr("data-fail");
 	var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + fail + "&api_key=IiL5GT5whesOI0YtGNx1yC2bbNpBzNhh&limit=10";
 
-    $.ajax({
+	// AJAX request to Giphy
+	$.ajax({
     	url: queryURL,
     	method: "GET"
     }).then(function(response) {
-    	var results = response.data;
-		var resultsContainerSection = $("<section class='results-container'>");
+    	var results = response.data; // Stores response in a variable
+		var $resultsContainer = $("<section class='results-container'>"); 
 
     	for(var i = 0; i < results.length; i++) {
-    		var singleResultDiv = $("<div class='result-container'>");
-    		
-    		var rating = results[i].rating;
-
+    		var singleResultDiv = $("<div class='rating-container'>");
+			
+			var rating = results[i].rating;
     		var rating = $("<p>").text("Rating: " + rating);
 
+			// Creates image tags with attributes for still and animated images
     		var failImg = $("<img class='result'>");
     		failImg.attr("src", results[i].images.fixed_height_still.url);
     		failImg.attr("data-state", "still");
     		failImg.attr("data-still", results[i].images.fixed_height_still.url);
     		failImg.attr("data-animate", results[i].images.fixed_height.url);
 
+			// Puts still image and rating into divs; puts divs into section
     		singleResultDiv.prepend(failImg);
     		singleResultDiv.prepend(rating);
-    		resultsContainerSection.prepend(singleResultDiv);
+    		$resultsContainer.prepend(singleResultDiv);
     	}
 
-    	$("#fails-group").prepend(resultsContainerSection);
+		// Puts section on the page
+    	$("#fails-group").prepend($resultsContainer);
     });
 });
 
