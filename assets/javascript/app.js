@@ -5,13 +5,13 @@ var topics = [
 	"ice skating fails",
 	"skateboarding fails",
 	"basketball fails",
-	"baseball bloopers",
+	"dog fails",
 	"animal fails",
 	"drunk people fails",
 	"high five fails",
 	"dancing fails",
 	"running fails",
-	"car fails",
+	"cat fails",
 ];
 
 // Creates a button for each topic in the array and puts them on the page
@@ -41,6 +41,12 @@ $("#add-button").on("click", function(x) {
 		$("#button-group").append(button);
     }
     // Clears the user input
+	$("#new-input").val("");
+});
+
+// On click function for 'Clear' button
+$("#clear-button").on("click", function() {
+	$("<section class='results-container'>").clear();
 	$("#new-input").val("");
 });
 
