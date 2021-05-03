@@ -7,11 +7,20 @@
         <link rel="stylesheet" href="assets/css/style.css">
         <!-- Link to Google Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Faster+One|Londrina+Solid|Sue+Ellen+Francisco" rel="stylesheet">
+	    
+	<!-- Segment Analytics.js -->
+	<script>
+	  !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware"];analytics.factory=function(e){return function(){var t=Array.prototype.slice.call(arguments);t.unshift(e);analytics.push(t);return analytics}};for(var e=0;e<analytics.methods.length;e++){var key=analytics.methods[e];analytics[key]=analytics.factory(key)}analytics.load=function(key,e){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);analytics._loadOptions=e};analytics._writeKey="B1OaLjcZB2UxqzsV4xlspfHyAJbysHKZ";analytics.SNIPPET_VERSION="4.13.2";
+	  	analytics.load("B1OaLjcZB2UxqzsV4xlspfHyAJbysHKZ");
+	  	analytics.page();
+	  }}();
+	</script>
+	    
     </head>
 
     <body>
         <div class="wrapper">
-            <h1>Fails: <small>they can happen to any of us....</small></h1>
+            <h1>Fails: <small>they can happen to any of us...</small></h1>
             <div id="button-group"></div>
             <form>
                 <input id="new-input" type="text" placeholder="Type category here...">
